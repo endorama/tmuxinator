@@ -100,7 +100,14 @@ module Tmuxinator
     end
 
     def render
-      self.class.render_template(Tmuxinator::Config.template, binding)
+      output  = ""
+      output += "#### priting start template:\n"
+      output += self.class.render_template(Tmuxinator::Config.template, binding)
+      output += "#### end start template\n"
+      output += "#### priting stop template:\n"
+      output += self.class.render_template(Tmuxinator::Config.stop_template, binding)
+      output += "#### end stop template\n"
+      output
     end
 
     def kill
